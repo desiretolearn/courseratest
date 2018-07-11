@@ -1,8 +1,114 @@
-<html>
+<html ng-app="myFirstApp">
 <head>
 	<title>Hello Coursera</title>
 </head>
 <body>
 	<h1>AngularJS</h1>
-	</body>
+	<div ng-controller = "myFirstController">
+		<input type="text" ng-model="name">
+		<p>{{name}}</p>		
+		<p>{{sayHello("Jujubi")}}</p>
+		<p>{{sayHai()}}</p>
+	</div>
+	<div ng-controller = "nameCalculatorController">
+		Name: <input type="text" ng-model="sname" ng-keyup = "displayNameValue();">		
+		<p>Numeric value of name: {{nameValue}}</p>
+	</div>
+	<div ng-controller = "dIController">
+		Name: <input type="text" ng-model="pname" ng-blur="upper();">
+		{{pname}}	
+	</div>
+	<div ng-controller = "cFController">
+		Message: <input type="text" ng-model="msg">
+		<p>Loves : {{lovesmsg()}} </p>
+		<p>{{msg | loves}}</p>
+		<p>Truth : {{truthmsg()}} </p>
+		<p>{{msg | truth : "sushma" : "vamsi" }}</p>
+		<p>Big Truth: {{ msg | loves | truth : "sushma" : "vamsi" | uppercase}}
+	</div>
+	<div ng-controller = "nGController">
+		<button ng-click="feedMe()">Feed Me</button>
+		<img ng-src="img-{{stateOfBeing}}.jpg"/>
+	</div>
+	<div ng-controller = "counterController">
+<!-- 		<p>{{counter}}</p>
+ -->		<button ng-click="checkCounter()">Check Counter</button>
+		<button ng-click="incrementCounter()">Increment Counter</button>
+<!-- 		<p>{{counter+1}}
+ -->	</div>
+ <div ng-controller = "repeatController">
+ 	<input type='text' ng-model="search">
+ 	<ul>
+ 		<li ng-repeat = "person in slist1 | filter : search">{{person}}</li>
+ 	</ul>
+ 	<ul>
+ 		<li ng-repeat = "person in slist2">{{$index+1}}<p>Name : {{person.name}}</p>
+ 			<p>Age : {{person.age}}</p></li>
+ 	</ul>
+ 			Name : <input type="text" ng-model="newName">
+ 			Age : <input type="text" ng-model="newAge">
+ 	<button ng-click="addPerson()">Add Person</button>
+ </div>
+
+ <div ng-controller = "parentController1">
+ 		<p>Parent Value : {{value}} </p>
+ 		<p>Parent Object Value : {{obj.objValue}}</p>
+ 		<p>Parent Method : {{meth()}}</p>
+ 		<p>pc value : {{pc.value}}</p>
+ 	<div ng-controller="childController1">
+ 		<p>Child Value : {{value}} </p>
+ 		<p>Child Object Value : {{obj.objValue}}</p>
+ 		<p>Child Method : {{meth()}}</p>
+ 		<p>pc value : {{pc.value}}</p>
+ 		Value : <input type="text" ng-model = "value">
+ 		Obj Value :<input type="text" ng-model = "obj.objValue">
+ 		PC Value : <input type="text" ng-model = "pc.value">
+ 	</div>
+ </div>
+
+  <div ng-controller = "parentController2 as parent">
+ 		<p>pc2 Value : {{parent.value}} </p>
+ 		 		<p>pc2 otherValue : {{parent.othervalue}} </p>
+ 	<div ng-controller="childController2 as child">
+ 		<p>cc2 Value : {{child.value}} </p>
+ 		 		<p>cc2 otherValue : {{child.othervalue}} </p>
+ 		 		 	child Value : <input type="text" ng-model = "child.value">
+ 		 		 		 		 		 		child other Value : <input type="text" ng-model = "child.othervalue">
+ 	</div>
+
+ 	<div ng-controller="manageShoppingListController as manageItems">
+ 		Name : <input type="text" ng-model = "manageItems.itemName">
+ 		Quantity : <input type="text" ng-model = "manageItems.itemQuantity">
+ 		<button ng-click="manageItems.addItem()">Add Item</button>
+ 	</div>
+ 	<div ng-controller="showShoppingListController as showItems">
+ 		<ol>
+ 			<li ng-repeat="item in showItems.items">{{item.itemQuantity}} of {{item.itemName}}<button ng-click="showItems.removeItem($index)">Remove Item</button></li>
+ 		</ol>
+ 	</div>
+
+ 	<div ng-controller="shoppingListController1 as list1">
+ 		Name : <input type="text" ng-model = "list1.itemName">
+ 		Quantity : <input type="text" ng-model = "list1.itemQuantity">
+ 		<button ng-click="list1.addItem()">Add Item</button>
+ 		<ol>
+ 			<li ng-repeat="item in list1.items">{{item.itemQuantity}} of {{item.itemName}}<button ng-click="list1.removeItem($index)">Remove Item</button></li>
+ 		</ol>
+ 		<div class="error">Error : {{list1.errorMessage}}</div>
+ 	</div>
+ 	<div ng-controller="shoppingListController2 as list2">
+ 		Name : <input type="text" ng-model = "list2.itemName">
+ 		Quantity : <input type="text" ng-model = "list2.itemQuantity">
+ 		<button ng-click="list2.addItem()">Add Item</button>
+ 		<ol>
+ 			<li ng-repeat="item in list2.items">{{item.itemQuantity}} of {{item.itemName}}<button ng-click="list2.removeItem($index)">Remove Item</button></li>
+ 		</ol>
+ 		 <div class="error">Error : {{list2.errorMessage}}</div>
+ 	</div>
+
+
+ </div>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
 </html>
